@@ -5,6 +5,8 @@ import CreateTodoButton from "./components/CreateTodoButton";
 import TodoList from "./components/TodoList";
 import TodoItem from "./components/TodoItem";
 import { TodoProvider, TodoContext } from "./TodoContext";
+import Modal from "./Modal";
+import TodoForm from "./components/TodoForm";
 
 function App() {
 	const {
@@ -12,7 +14,9 @@ function App() {
 		loading,
 		searchedTodos,
 		completeTodo,
-		deleteTodo
+		deleteTodo,
+		openModal,
+		setOpenModal
 
 	} =
 		useContext(TodoContext);
@@ -35,7 +39,14 @@ function App() {
 					/>
 				))}
 			</TodoList>
-			<CreateTodoButton />
+			<CreateTodoButton openModal={openModal} setOpenModal={setOpenModal} />
+			{
+				!!openModal && (
+					<Modal>
+						<TodoForm />
+					</Modal>
+				)
+			}
 		</>
 	);
 }
