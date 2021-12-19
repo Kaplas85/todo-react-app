@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 
-export default function TodoCounter({ completed, total }) {
+export default function TodoCounter() {
+  const { totalTodos, completedTodos } = useContext(TodoContext)
   return (
     <h2 className="text-center font-bold mt-14 text-4xl">
-      {completed > 0 ? "Has" : "No has"} completado{" "}
-      {completed === 0 ? "ningun TODO" : completed} de {total} TODOs
+      {completedTodos > 0 ? "Has" : "No has"} completado{" "}
+      {completedTodos === 0 ? "ningun TODO" : completedTodos} de {totalTodos} TODOs
     </h2>
   );
 }
