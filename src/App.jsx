@@ -7,6 +7,7 @@ import TodoItem from "./components/TodoItem";
 import { TodoProvider, TodoContext } from "./TodoContext";
 import Modal from "./Modal";
 import TodoForm from "./components/TodoForm";
+import TodoLoading from "./components/TodoLoading";
 
 function App() {
 	const {
@@ -27,7 +28,7 @@ function App() {
 
 			<TodoList>
 				{error && <p>Desesperate, hubo un error</p>}
-				{loading && <p>Estamos cargando, no desesperes</p>}
+				{loading && <TodoLoading />}
 				{!loading && !searchedTodos.length && <p>Escribe tu primer TODO</p>}
 				{searchedTodos.map((todo) => (
 					<TodoItem
